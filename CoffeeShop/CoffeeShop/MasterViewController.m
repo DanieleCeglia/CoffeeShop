@@ -13,8 +13,12 @@
 #define kCLIENTID "GGHC2ZDRME511ZY4NEUK4CN5IKIYE3K55YTX2OWW5HDSMIIZ"
 #define kCLIENTSECRET "YO3G2Q0DZEYHWMSXUW41UBYV3TUIHZMW54CN0G2MQI34TZD1"
 
+#warning VEDERE QUESTI LINK QUA SOTTO!!!
 /*
  MIGRAZIONE RESTKIT da 0.10.x a 0.20.0 vedere: https://github.com/RestKit/RestKit/wiki/Upgrading-from-v0.10.x-to-v0.20.0
+ 
+ E CODICE GIÀ MEZZO CONVERTITO DA QUALCUNO SU INTERNET: http://madeveloper.blogspot.it/2013/01/ios-restkit-tutorial-code-for-version.html
+ (che però è già deprecato su alcuni metodi...)
 */
 
 @interface MasterViewController () {
