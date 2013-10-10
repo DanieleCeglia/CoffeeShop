@@ -27,6 +27,8 @@
 		6414805918069D9D0020804C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6414805818069D9D0020804C /* MobileCoreServices.framework */; };
 		6414805B18069DA90020804C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6414805A18069DA90020804C /* Security.framework */; };
 		6414805D18069DB50020804C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6414805C18069DB50020804C /* SystemConfiguration.framework */; };
+		641480621806A6220020804C /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 641480611806A6220020804C /* Venue.m */; };
+		641480631806A6220020804C /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 641480611806A6220020804C /* Venue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,8 @@
 		6414805818069D9D0020804C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		6414805A18069DA90020804C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6414805C18069DB50020804C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		641480601806A6220020804C /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
+		641480611806A6220020804C /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,8 @@
 				64148020180697AB0020804C /* MasterViewController.m */,
 				64148025180697AB0020804C /* Images.xcassets */,
 				64148011180697AB0020804C /* Supporting Files */,
+				641480601806A6220020804C /* Venue.h */,
+				641480611806A6220020804C /* Venue.m */,
 			);
 			path = CoffeeShop;
 			sourceTree = "<group>";
@@ -358,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6414801B180697AB0020804C /* AppDelegate.m in Sources */,
+				641480621806A6220020804C /* Venue.m in Sources */,
 				64148021180697AB0020804C /* MasterViewController.m in Sources */,
 				64148017180697AB0020804C /* main.m in Sources */,
 			);
@@ -368,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64148039180697AB0020804C /* CoffeeShopTests.m in Sources */,
+				641480631806A6220020804C /* Venue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
