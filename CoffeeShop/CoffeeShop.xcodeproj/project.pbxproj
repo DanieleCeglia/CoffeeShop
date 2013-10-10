@@ -15,7 +15,6 @@
 		6414801B180697AB0020804C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414801A180697AB0020804C /* AppDelegate.m */; };
 		6414801E180697AB0020804C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6414801C180697AB0020804C /* Main.storyboard */; };
 		64148021180697AB0020804C /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64148020180697AB0020804C /* MasterViewController.m */; };
-		64148024180697AB0020804C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64148023180697AB0020804C /* DetailViewController.m */; };
 		64148026180697AB0020804C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64148025180697AB0020804C /* Images.xcassets */; };
 		6414802D180697AB0020804C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6414802C180697AB0020804C /* XCTest.framework */; };
 		6414802E180697AB0020804C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6414800A180697AB0020804C /* Foundation.framework */; };
@@ -48,8 +47,6 @@
 		6414801D180697AB0020804C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6414801F180697AB0020804C /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		64148020180697AB0020804C /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		64148022180697AB0020804C /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		64148023180697AB0020804C /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		64148025180697AB0020804C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6414802B180697AB0020804C /* CoffeeShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeeShopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6414802C180697AB0020804C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -120,8 +117,6 @@
 				6414801C180697AB0020804C /* Main.storyboard */,
 				6414801F180697AB0020804C /* MasterViewController.h */,
 				64148020180697AB0020804C /* MasterViewController.m */,
-				64148022180697AB0020804C /* DetailViewController.h */,
-				64148023180697AB0020804C /* DetailViewController.m */,
 				64148025180697AB0020804C /* Images.xcassets */,
 				64148011180697AB0020804C /* Supporting Files */,
 			);
@@ -257,7 +252,6 @@
 				6414801B180697AB0020804C /* AppDelegate.m in Sources */,
 				64148021180697AB0020804C /* MasterViewController.m in Sources */,
 				64148017180697AB0020804C /* main.m in Sources */,
-				64148024180697AB0020804C /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
