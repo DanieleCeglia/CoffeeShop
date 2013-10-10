@@ -21,6 +21,12 @@
 		6414802F180697AB0020804C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6414800E180697AB0020804C /* UIKit.framework */; };
 		64148037180697AB0020804C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64148035180697AB0020804C /* InfoPlist.strings */; };
 		64148039180697AB0020804C /* CoffeeShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64148038180697AB0020804C /* CoffeeShopTests.m */; };
+		6414805318069D760020804C /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6414804A18069B710020804C /* libRestKit.a */; };
+		6414805518069D890020804C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6414805418069D890020804C /* CFNetwork.framework */; };
+		6414805718069D920020804C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6414805618069D920020804C /* CoreData.framework */; };
+		6414805918069D9D0020804C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6414805818069D9D0020804C /* MobileCoreServices.framework */; };
+		6414805B18069DA90020804C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6414805A18069DA90020804C /* Security.framework */; };
+		6414805D18069DB50020804C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6414805C18069DB50020804C /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +36,41 @@
 			proxyType = 1;
 			remoteGlobalIDString = 64148006180697AB0020804C;
 			remoteInfo = CoffeeShop;
+		};
+		6414804918069B710020804C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6414804218069B710020804C /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D1614564E810060A5C5;
+			remoteInfo = RestKit;
+		};
+		6414804B18069B710020804C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6414804218069B710020804C /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D2614564E820060A5C5;
+			remoteInfo = RestKitTests;
+		};
+		6414804D18069B710020804C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6414804218069B710020804C /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E62145651060060A5C5;
+			remoteInfo = RestKitFramework;
+		};
+		6414804F18069B710020804C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6414804218069B710020804C /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E78145651060060A5C5;
+			remoteInfo = RestKitFrameworkTests;
+		};
+		6414805118069D230020804C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6414804218069B710020804C /* RestKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 25160D1514564E810060A5C5;
+			remoteInfo = RestKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -53,6 +94,12 @@
 		64148034180697AB0020804C /* CoffeeShopTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoffeeShopTests-Info.plist"; sourceTree = "<group>"; };
 		64148036180697AB0020804C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		64148038180697AB0020804C /* CoffeeShopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoffeeShopTests.m; sourceTree = "<group>"; };
+		6414804218069B710020804C /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = ../RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
+		6414805418069D890020804C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		6414805618069D920020804C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6414805818069D9D0020804C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		6414805A18069DA90020804C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		6414805C18069DB50020804C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +107,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6414805D18069DB50020804C /* SystemConfiguration.framework in Frameworks */,
+				6414805B18069DA90020804C /* Security.framework in Frameworks */,
+				6414805918069D9D0020804C /* MobileCoreServices.framework in Frameworks */,
+				6414805718069D920020804C /* CoreData.framework in Frameworks */,
+				6414805518069D890020804C /* CFNetwork.framework in Frameworks */,
+				6414805318069D760020804C /* libRestKit.a in Frameworks */,
 				6414800D180697AB0020804C /* CoreGraphics.framework in Frameworks */,
 				6414800F180697AB0020804C /* UIKit.framework in Frameworks */,
 				6414800B180697AB0020804C /* Foundation.framework in Frameworks */,
@@ -82,6 +135,7 @@
 		64147FFE180697AB0020804C = {
 			isa = PBXGroup;
 			children = (
+				6414804218069B710020804C /* RestKit.xcodeproj */,
 				64148010180697AB0020804C /* CoffeeShop */,
 				64148032180697AB0020804C /* CoffeeShopTests */,
 				64148009180697AB0020804C /* Frameworks */,
@@ -101,6 +155,11 @@
 		64148009180697AB0020804C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6414805C18069DB50020804C /* SystemConfiguration.framework */,
+				6414805A18069DA90020804C /* Security.framework */,
+				6414805818069D9D0020804C /* MobileCoreServices.framework */,
+				6414805618069D920020804C /* CoreData.framework */,
+				6414805418069D890020804C /* CFNetwork.framework */,
 				6414800A180697AB0020804C /* Foundation.framework */,
 				6414800C180697AB0020804C /* CoreGraphics.framework */,
 				6414800E180697AB0020804C /* UIKit.framework */,
@@ -152,6 +211,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		6414804318069B710020804C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6414804A18069B710020804C /* libRestKit.a */,
+				6414804C18069B710020804C /* RestKitTests.octest */,
+				6414804E18069B710020804C /* RestKit.framework */,
+				6414805018069B710020804C /* RestKitFrameworkTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -166,6 +236,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6414805218069D230020804C /* PBXTargetDependency */,
 			);
 			name = CoffeeShop;
 			productName = CoffeeShop;
@@ -215,6 +286,12 @@
 			mainGroup = 64147FFE180697AB0020804C;
 			productRefGroup = 64148008180697AB0020804C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6414804318069B710020804C /* Products */;
+					ProjectRef = 6414804218069B710020804C /* RestKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				64148006180697AB0020804C /* CoffeeShop */,
@@ -222,6 +299,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6414804A18069B710020804C /* libRestKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKit.a;
+			remoteRef = 6414804918069B710020804C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6414804C18069B710020804C /* RestKitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitTests.octest;
+			remoteRef = 6414804B18069B710020804C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6414804E18069B710020804C /* RestKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RestKit.framework;
+			remoteRef = 6414804D18069B710020804C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6414805018069B710020804C /* RestKitFrameworkTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitFrameworkTests.octest;
+			remoteRef = 6414804F18069B710020804C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		64148005180697AB0020804C /* Resources */ = {
@@ -270,6 +378,11 @@
 			isa = PBXTargetDependency;
 			target = 64148006180697AB0020804C /* CoffeeShop */;
 			targetProxy = 64148030180697AB0020804C /* PBXContainerItemProxy */;
+		};
+		6414805218069D230020804C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RestKit;
+			targetProxy = 6414805118069D230020804C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -380,7 +493,16 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeShop/CoffeeShop-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+				);
 				INFOPLIST_FILE = "CoffeeShop/CoffeeShop-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -393,7 +515,16 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeShop/CoffeeShop-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+				);
 				INFOPLIST_FILE = "CoffeeShop/CoffeeShop-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
