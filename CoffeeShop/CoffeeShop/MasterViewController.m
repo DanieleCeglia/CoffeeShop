@@ -9,11 +9,11 @@
 #import "MasterViewController.h"
 #import <RestKit/RestKit.h>
 #import "Venue.h"
+#import "VenueCell.h"
 
 #define kCLIENTID "GGHC2ZDRME511ZY4NEUK4CN5IKIYE3K55YTX2OWW5HDSMIIZ"
 #define kCLIENTSECRET "YO3G2Q0DZEYHWMSXUW41UBYV3TUIHZMW54CN0G2MQI34TZD1"
 
-#warning VEDERE QUESTI LINK QUA SOTTO!!!
 /*
  TUTORIAL SEGUITO DA: http://www.raywenderlich.com/13097/intro-to-restkit-tutorial
  
@@ -70,6 +70,7 @@
     /* MAPPATURA JSON CON GLI OGGETTI DEL MODELLO */
     
     RKObjectMapping *locationMapping = [RKObjectMapping mappingForClass:[Location class]]; // -- questa rimane uguale ---
+    RKObjectMapping *statsMapping = [RKObjectMapping mappingForClass:[Stats class]]; // -- questa rimane uguale --
     RKObjectMapping *venueMapping = [RKObjectMapping mappingForClass:[Venue class]]; // -- questa rimane uguale --
     
     
@@ -88,9 +89,23 @@
                                                           @"lng"         : @"lng"}];
     
     // -- questa -- [venueMapping mapRelationship:@"location" withMapping:locationMapping];
-    // --  e questa -- [objectManager.mappingProvider setMapping:locationMapping forKeyPath:@"location"];
+    // -- e questa -- [objectManager.mappingProvider setMapping:locationMapping forKeyPath:@"location"];
     // -- diventano questa ---
     [venueMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"location" toKeyPath:@"location" withMapping:locationMapping]];
+    
+    
+    /*** mappatura stats ***/
+    
+    // -- questa -- [statsMapping mapKeyPathsToAttributes:@"checkinsCount", @"checkins", @"tipCount", @"tips", @"usersCount", @"users", nil]
+    // -- diventa questa --
+    [statsMapping addAttributeMappingsFromDictionary:@{@"checkinsCount" : @"checkins",
+                                                       @"tipCount"      : @"tips",
+                                                       @"usersCount"    : @"users"}];
+    
+    // -- questa -- [venueMapping mapRelationship:@"stats" withMapping:statsMapping];
+    // -- e questa -- [objectManager.mappingProvider setMapping:statsMapping forKeyPath:@"stats"];
+    // -- diventano questa ---
+    [venueMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"stats" toKeyPath:@"stats" withMapping:statsMapping]];
     
     
     /*** mappatura venues ***/
@@ -128,11 +143,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    VenueCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VenueCell"];
 
     Venue *venue = [_objects objectAtIndex:indexPath.row];
-    cell.textLabel.text = [venue.name length] > 24 ? [venue.name substringToIndex:24] : venue.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.0fm", [venue.location.distance floatValue]];
+    
+    cell.nameLabel.text = [venue.name length] > 25 ? [venue.name substringToIndex:25] : venue.name;
+    cell.distanceLabel.text = [NSString stringWithFormat:@"%.0fm", [venue.location.distance floatValue]];
+    cell.checkinsLabel.text = [NSString stringWithFormat:@"%d checkins", [venue.stats.checkins intValue]];
     
     return cell;
 }
@@ -175,8 +192,9 @@
                                         
                                         for (Venue *item in result)
                                         {
-                                            NSLog(@"name: %@",item.name);
-                                            NSLog(@"distance: %@",item.location.distance);
+                                            NSLog(@"name: %@", item.name);
+                                            NSLog(@"distance: %@", item.location.distance);
+                                            NSLog(@"checkins: %@", item.stats.checkins);
                                         }
                                         
                                         [self.tableView reloadData];
