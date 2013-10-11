@@ -29,6 +29,7 @@
 		6414805D18069DB50020804C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6414805C18069DB50020804C /* SystemConfiguration.framework */; };
 		641480621806A6220020804C /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 641480611806A6220020804C /* Venue.m */; };
 		641480631806A6220020804C /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 641480611806A6220020804C /* Venue.m */; };
+		641B71121807E5D600924F51 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 641B71111807E5D600924F51 /* Location.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,8 @@
 		6414805C18069DB50020804C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		641480601806A6220020804C /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
 		641480611806A6220020804C /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
+		641B71101807E5D600924F51 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		641B71111807E5D600924F51 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +187,8 @@
 				64148011180697AB0020804C /* Supporting Files */,
 				641480601806A6220020804C /* Venue.h */,
 				641480611806A6220020804C /* Venue.m */,
+				641B71101807E5D600924F51 /* Location.h */,
+				641B71111807E5D600924F51 /* Location.m */,
 			);
 			path = CoffeeShop;
 			sourceTree = "<group>";
@@ -364,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6414801B180697AB0020804C /* AppDelegate.m in Sources */,
+				641B71121807E5D600924F51 /* Location.m in Sources */,
 				641480621806A6220020804C /* Venue.m in Sources */,
 				64148021180697AB0020804C /* MasterViewController.m in Sources */,
 				64148017180697AB0020804C /* main.m in Sources */,

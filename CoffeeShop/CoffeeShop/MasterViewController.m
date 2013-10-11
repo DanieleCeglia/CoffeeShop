@@ -46,34 +46,64 @@
     
     
     
+    
     /* DEFINIZIONE URL DEL WEBSERVICE REST */
     
     // -- questa -- RKURL *baseURL = [RKURL URLWithBaseURLString:@"https://api.Foursquare.com/v2"];
     // -- più questa -- RKObjectManager *objectManager = [RKObjectManager objectManagerWithBaseURL:baseURL];
     
+    //RKObjectManager* objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://api.Foursquare.com/v2"]]; // -- NON diventa semplicemente questa! perché il mapping poi non riesce... --
+    
+    // -- ... invece il tutto si traduce così!!! --
     NSURL *baseURL = [NSURL URLWithString:@"https://api.foursquare.com/v2"];
     AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:baseURL];
     [client setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
     RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
     
-    //RKObjectManager* objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://api.Foursquare.com/v2"]]; // -- diventa questa! --
-    
     // -- questa non serve più -- objectManager.client.baseURL = baseURL;
-    NSLog(@"objectManager.HTTPClient.baseURL: %@", objectManager.HTTPClient.baseURL); // -- perché c'è l'ha già! --
+    // -- perché c'è l'ha già! --
+    //NSLog(@"objectManager.HTTPClient.baseURL: %@", objectManager.HTTPClient.baseURL);
     
     
     
-    /* MAPPATURA JSON CON IL NOSTRO OGGETTO DEL MODELLO */
     
+    /* MAPPATURA JSON CON GLI OGGETTI DEL MODELLO */
+    
+    RKObjectMapping *locationMapping = [RKObjectMapping mappingForClass:[Location class]]; // -- questa rimane uguale ---
     RKObjectMapping *venueMapping = [RKObjectMapping mappingForClass:[Venue class]]; // -- questa rimane uguale --
     
-    // -- questa... -- [venueMapping mapKeyPathsToAttributes:@"name", @"name", nil];
-    [venueMapping addAttributeMappingsFromDictionary:@{@"name" : @"name"}]; // -- ... diventa così! --
     
-    //[objectManager.mappingProvider setMapping:venueMapping forKeyPath:@"response.venues"];
+    /*** mappatura location ***/
     
+    // -- questa -- [locationMapping mapKeyPathsToAttributes:@"address", @"address", @"city", @"city", @"country", @"country", @"crossStreet", @"crossStreet", @"postalCode", @"postalCode", @"state", @"state", @"distance", @"distance", @"lat", @"lat", @"lng", @"lng", nil];
+    // -- diventa questa --
+    [locationMapping addAttributeMappingsFromDictionary:@{@"address"     : @"address",
+                                                          @"city"        : @"city",
+                                                          @"country"     : @"country",
+                                                          @"crossStreet" : @"crossStreet",
+                                                          @"postalCode"  : @"postalCode",
+                                                          @"state"       : @"state",
+                                                          @"distance"    : @"distance",
+                                                          @"lat"         : @"lat",
+                                                          @"lng"         : @"lng"}];
+    
+    // -- questa -- [venueMapping mapRelationship:@"location" withMapping:locationMapping];
+    // --  e questa -- [objectManager.mappingProvider setMapping:locationMapping forKeyPath:@"location"];
+    // -- diventano questa ---
+    [venueMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"location" toKeyPath:@"location" withMapping:locationMapping]];
+    
+    
+    /*** mappatura venues ***/
+    
+    // -- questa -- [venueMapping mapKeyPathsToAttributes:@"name", @"name", nil];
+    // -- diventa così! --
+    [venueMapping addAttributeMappingsFromDictionary:@{@"name" : @"name"}];
+    
+    // -- questo --[objectManager.mappingProvider setMapping:venueMapping forKeyPath:@"response.venues"];
+    // -- diventa queste due istruzioni qua -- (notare che si scorre l'albero JSON con response.venues per prendere solo la parte riguardante venues...)
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:venueMapping method:RKRequestMethodGET pathPattern:nil keyPath:@"response.venues" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
+    [objectManager addResponseDescriptor:responseDescriptor]; // (e notare questo collegamento)
+    
     
     [self sendRequest];
 }
@@ -100,8 +130,10 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    Venue *venue = [_objects objectAtIndex:indexPath.row];
+    cell.textLabel.text = [venue.name length] > 24 ? [venue.name substringToIndex:24] : venue.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.0fm", [venue.location.distance floatValue]];
+    
     return cell;
 }
 
@@ -109,6 +141,11 @@
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Metodi privati
@@ -123,26 +160,30 @@
     queryParams = [NSDictionary dictionaryWithObjectsAndKeys:latLon, @"ll", clientID, @"client_id", clientSecret, @"client_secret", @"coffee", @"query", @"20120602", @"v", nil];
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     
-    //RKURL *URL = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/venues/search" queryParameters:queryParams];
-    //[objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [URL resourcePath], [URL query]] delegate:self];
+    // -- questa -- RKURL *URL = [RKURL URLWithBaseURL:[objectManager baseURL] resourcePath:@"/venues/search" queryParameters:queryParams];
+    // -- e questa -- [objectManager loadObjectsAtResourcePath:[NSString stringWithFormat:@"%@?%@", [URL resourcePath], [URL query]] delegate:self];
     
+    // -- diventano questa! --
     [objectManager getObjectsAtPath:@"https://api.foursquare.com/v2/venues/search"
                          parameters:queryParams
                             success:^(RKObjectRequestOperation *operaton, RKMappingResult *mappingResult)
                                     {
-                                        NSLog(@"success: mappings: %@", mappingResult);
-                                        /*NSArray *result = [mappingResult array];
-                                        cafeArray = [mappingResult array];
+                                        NSLog(@"Mappatura riuscita: %@", mappingResult);
+                                        
+                                        NSArray *result = [mappingResult array];
+                                        _objects = [[mappingResult array] mutableCopy];
+                                        
                                         for (Venue *item in result)
                                         {
-                                            NSLog(@"name=%@",item.name);
-                                            NSLog(@"name=%@",item.location.distance);
+                                            NSLog(@"name: %@",item.name);
+                                            NSLog(@"distance: %@",item.location.distance);
                                         }
-                                        [self.tableView reloadData];*/
+                                        
+                                        [self.tableView reloadData];
                                     }
                             failure:^(RKObjectRequestOperation *operaton, NSError *error)
                                     {
-                                        NSLog (@"failure: operation: %@ \n\nerror: %@", operaton, error);
+                                        NSLog (@"Mappattura FALLITA: %@ \n\nErrore: %@", operaton, error);
                                     }];
 }
 
