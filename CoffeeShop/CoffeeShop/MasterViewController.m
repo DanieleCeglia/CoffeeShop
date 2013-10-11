@@ -15,6 +15,8 @@
 
 #warning VEDERE QUESTI LINK QUA SOTTO!!!
 /*
+ TUTORIAL SEGUITO DA: http://www.raywenderlich.com/13097/intro-to-restkit-tutorial
+ 
  MIGRAZIONE RESTKIT da 0.10.x a 0.20.0 vedere: https://github.com/RestKit/RestKit/wiki/Upgrading-from-v0.10.x-to-v0.20.0
  
  E CODICE GIÀ MEZZO CONVERTITO DA QUALCUNO SU INTERNET: http://madeveloper.blogspot.it/2013/01/ios-restkit-tutorial-code-for-version.html
@@ -48,7 +50,13 @@
     
     // -- questa -- RKURL *baseURL = [RKURL URLWithBaseURLString:@"https://api.Foursquare.com/v2"];
     // -- più questa -- RKObjectManager *objectManager = [RKObjectManager objectManagerWithBaseURL:baseURL];
-    RKObjectManager* objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://api.Foursquare.com/v2"]]; // -- diventa questa! --
+    
+    NSURL *baseURL = [NSURL URLWithString:@"https://api.foursquare.com/v2"];
+    AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:baseURL];
+    [client setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
+    RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+    
+    //RKObjectManager* objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"https://api.Foursquare.com/v2"]]; // -- diventa questa! --
     
     // -- questa non serve più -- objectManager.client.baseURL = baseURL;
     NSLog(@"objectManager.HTTPClient.baseURL: %@", objectManager.HTTPClient.baseURL); // -- perché c'è l'ha già! --
@@ -120,7 +128,7 @@
     
     [objectManager getObjectsAtPath:@"https://api.foursquare.com/v2/venues/search"
                          parameters:queryParams
-                            success:^(RKObjectRequestOperation * operaton, RKMappingResult *mappingResult)
+                            success:^(RKObjectRequestOperation *operaton, RKMappingResult *mappingResult)
                                     {
                                         NSLog(@"success: mappings: %@", mappingResult);
                                         /*NSArray *result = [mappingResult array];
@@ -132,7 +140,7 @@
                                         }
                                         [self.tableView reloadData];*/
                                     }
-                            failure:^(RKObjectRequestOperation * operaton, NSError * error)
+                            failure:^(RKObjectRequestOperation *operaton, NSError *error)
                                     {
                                         NSLog (@"failure: operation: %@ \n\nerror: %@", operaton, error);
                                     }];

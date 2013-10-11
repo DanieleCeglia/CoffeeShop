@@ -599,6 +599,7 @@
 				6414803E180697AB0020804C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6414803F180697AB0020804C /* Build configuration list for PBXNativeTarget "CoffeeShopTests" */ = {
 			isa = XCConfigurationList;
@@ -607,6 +608,7 @@
 				64148041180697AB0020804C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
